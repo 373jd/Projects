@@ -1,38 +1,70 @@
 public class Pet {
-    // priv data
+    // Private data fields
     private String name;
+    private String type;
+    private int age;
 
-    //public constructor
+    // Default constructor
     public Pet() {
         setName("Pet Name");
+        setType("dog");
+        setAge(1);
     }
 
+    // Custom constructor
+    public Pet(String name, String type, int age) {
+        setName(name);
+        setType(type);
+        setAge(age);
+    }
+
+    //  mutator
     public void setName(String name) {
         this.name = name;
     }
 
-    // public get/accessor
+    //  accessor
     public String getName() {
         return name;
+    }
+
+    // type mutator
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    // type accessor
+    public String getType() {
+        return type;
+    }
+
+    // age mutator
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // age accessor
+    public int getAge() {
+        return age;
     }
 
     // toString 
     public String toString() {
         String output = "Pet information:\n";
-        output += "Name: " + name;
+        output += "Name: " + name + "\n";
+        output += "Type: " + type + "\n";
+        output += "Age: " + age;
         return output;
     }
 
-    //main 
-    public static void main(String[] args)
-    {
-        Pet p1 = new Pet();
-        p1.setName("Pet Name");
-        System.out.println(p1.toString());
-
-        Pet p2 = new Pet();
-        p2.setName("Buster");
-        System.out.println(p2.toString());
+    // speak 
+    public String speak() {
+        if (type.equalsIgnoreCase("dog")) {
+            return "Woof";
+        } else if (type.equalsIgnoreCase("cat")) {
+            return "Meow";
+        } else {
+            return "Noise";
+        }
     }
-    
 }
