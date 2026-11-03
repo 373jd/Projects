@@ -9,19 +9,17 @@ public class Exam extends Assessment {
         this.questions = questions;
         this.missed = missed;
 
-        // Calculate points per question
+        // points per question
         pointsEach = 100.0 / questions;
 
-        // Calculate exam score
+        // exam score
         int numericScore = (int) Math.round(
             100.0 - (missed * pointsEach)
         );
 
-        // Set the inherited score field
         setScore(numericScore);
     }
 
-    // Return points awarded for each question
     public double getPointsEach() {
         return pointsEach;
     }
