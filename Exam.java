@@ -1,26 +1,36 @@
 public class Exam extends Assessment {
 
     private int questions;
-    private int missed;
-    private double pointsEach;
+    private int numMissed;
+    private int pointsEach;
 
     // Constructor
     public Exam(int questions, int missed) {
         this.questions = questions;
-        this.missed = missed;
+        this.numMissed = missed;
 
-        // points per question
-        pointsEach = 100.0 / questions;
+        if (questions == 0) {
+            System.out.println("Error: Number of questions cannot be zero.");
+            pointsEach = 0;
+            setScore(0);
+        } else {
+            pointsEach = 100 / questions;
 
-        // exam score
-        int numericScore = (int) Math.round(
-            100.0 - (missed * pointsEach)
-        );
+            int numericScore = (int) Math.round(
+                100.0 - (missed * (100.0 / questions))
+            );
 
-        setScore(numericScore);
+            setScore(numericScore);
+        }
     }
 
-    public double getPointsEach() {
+    // getpointseach
+    public int getPointsEach() {
         return pointsEach;
+    }
+
+    // getnumimssed
+    public int getNumMissed() {
+        return numMissed;
     }
 }
